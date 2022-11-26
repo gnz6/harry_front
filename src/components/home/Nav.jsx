@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux"
+import React, { useState } from 'react'
+import { useDispatch } from "react-redux"
 import logoedited from "../../assets/logoedited.png"
 import useLocalStorage from "../../hooks/useLocalStorage.js"
-import { FaBars, FaTimes, FaGithub, FaLinkedin } from "react-icons/fa"
+import { FaBars, FaTimes } from "react-icons/fa"
 import {NavLink} from "react-router-dom"
 
 const Nav = () => {
@@ -10,32 +10,13 @@ const Nav = () => {
   const [nav, setNav] = useState(false)
   const handleClick = () => setNav(!nav)
 
-  const auth = JSON.parse(localStorage.getItem("token"))
-  // const googleAuth = JSON.parse(localStorage.getItem("googleUser"))
-  const [googleUser, setGoogleUser] = useLocalStorage("googleUser")
-  const [localUser, setLocalUser] = useLocalStorage("localUser")
+
   const [tab, setTab] = useLocalStorage("tab")
-  const dispatch = useDispatch()
-  let logged = false
-
-  // const handleTab = (e)=>{
-  //   e.preventDefault()
-  // }
-
-  const handleLogout = (e) => {
-    e.preventDefault()
-    setGoogleUser(null)
-    setLocalUser(null)
-    window.location.reload()
-  }
-
-  useEffect(() => {
-  }, [dispatch, auth])
-
+   let logged = false
 
   
   return (
-    <nav class="fixed w-full h-[100px] flex justify-evenly items-center px-4 bg-[#742a2a] text-yellow-500 border-b-4 border-b-yellow-500 ">
+    <nav class=" z-0 fixed w-full h-[100px] flex justify-evenly items-center px-4 bg-[#742a2a] text-yellow-500 border-b-8 border-b-yellow-500 ">
       
       <div class="flex w-1/3 pt-2 ml-[-100px] mt-4 p-6">
         <img src={logoedited} alt="Daily Prophet" style={{ width: "90px", heigth: "90px" }} />
@@ -43,23 +24,11 @@ const Nav = () => {
       </div>
       <div class='hidden md:flex mr-[-120px]'>
         {/* aca puedo usar los LINK de react scroll con, veremos */}
-        <button onClick={()=>setTab("home")} class={`${tab !== "home" ? 'font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-xl border-b-none' : "font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-xl border-b-none bg-yellow-500 text-red-900 "}`}   > <NavLink to={"/"}>Home</NavLink></button>
-        <button onClick={()=>setTab("houses")} class={`${tab !== "houses" ? 'font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-xl border-b-none' : "font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-xl border-b-none bg-yellow-500 text-red-900 "}`}> <NavLink to={"/houses"}>Houses</NavLink></button>
-        <button onClick={()=>setTab("characters")} class={`${tab !== "characters" ? 'font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-xl border-b-none' : "font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-xl border-b-none bg-yellow-500 text-red-900 "}`}><NavLink to={"/characters"}> Characters </NavLink></button>
-        <button onClick={()=>setTab("spells")} class={`${tab !== "spells" ? 'font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-xl border-b-none' : "font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-xl border-b-none bg-yellow-500 text-red-900 "}`}><NavLink to={"/spells"}>Spells</NavLink></button>
-        {/* Validacion Logged true */}
-        {logged ?
-          <div class="flex">
-
-            <p onClick={handleLogout} class='font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-xl border-b-none  '>Logout</p>
-
-          </div>
-          :
-          <div class="flex">
-            <button onClick={()=>setTab("login")} class={`${tab !== "login" ? 'font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-xl border-b-none' : "font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-xl border-b-none bg-yellow-500 text-red-900 "}`}> Login </button>
-            <button onClick={()=>setTab("register")} class={`${tab !== "register" ? 'font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-xl border-b-none' : "font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-xl border-b-none bg-yellow-500 text-red-900 "}`}> Register</button>
-          </div>
-        }
+        <button onClick={()=>setTab("home")} class={`${tab !== "home" ? 'font-bold text-lg p-4 mt-10 border-x-4 border-t-4 border-yellow-500 rounded-md border-b-none hover:bg-yellow-500 transition duration-100 hover:text-black' : "font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-md border-b-none bg-yellow-500 text-red-900 "}`}   > <NavLink to={"/"}>Home</NavLink></button>
+        <button onClick={()=>setTab("houses")} class={`${tab !== "houses" ? 'font-bold text-lg p-4 mt-10 border-x-4 border-t-4 border-yellow-500 rounded-md border-b-none hover:bg-yellow-500 transition duration-100 hover:text-black' : "font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-md border-b-none bg-yellow-500 text-red-900 "}`}> <NavLink to={"/houses"}>Houses</NavLink></button>
+        <button onClick={()=>setTab("characters")} class={`${tab !== "characters" ? 'font-bold text-lg p-4 mt-10 border-x-4 border-t-4 border-yellow-500 rounded-md border-b-none hover:bg-yellow-500 transition duration-100 hover:text-black' : "font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-md border-b-none bg-yellow-500 text-red-900 "}`}><NavLink to={"/characters"}> Characters </NavLink></button>
+        <button onClick={()=>setTab("spells")} class={`${tab !== "spells" ? 'font-bold text-lg p-4 mt-10 border-x-4 border-t-4 border-yellow-500 rounded-md border-b-none hover:bg-yellow-500 transition duration-100 hover:text-black' : "font-bold text-xl p-4 mt-11 border-x-4 border-t-4 border-yellow-500 rounded-md border-b-none bg-yellow-500 text-red-900 "}`}><NavLink to={"/spells"}>Spells</NavLink></button>
+    
       </div>
 
 
