@@ -1,8 +1,10 @@
 import React from 'react'
+import background from "../../assets/backgroundHall.png"
 
 const Home = () => {
   return (
-    <div class="z-10">
+    <div class=" w-screen h-screen">
+      <h1>Welcome</h1>
     </div>
   )
 }

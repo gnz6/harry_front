@@ -3,6 +3,7 @@ import Nav from "./components/home/Nav"
 import Home from "./components/home/Home"
 import Login from "./components/auth/Login"
 import UserNav from "./components/home/UserNav"
+import Register from "./components/auth/Register"
 function App() {
 
   
@@ -14,6 +15,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/login" element={<Login/>}/>
+      <Route path="/register" element={<Register/>}/>
       </Routes> 
     </div>
     </BrowserRouter>

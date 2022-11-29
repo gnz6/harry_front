@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* @import url("./assets/backgroundHall.png") */
+
+@layer base{
+    body{
+        @apply bg-[url("assets/backgroundHall.png")] bg-cover bg-no-repeat
+    }
+}
