@@ -4,6 +4,8 @@ import Home from "./components/home/Home"
 import Login from "./components/auth/Login"
 import UserNav from "./components/home/UserNav"
 import Register from "./components/auth/Register"
+import Houses from "./components/Houses/Houses"
+import Characters from "./components/Characters/Characters"
 function App() {
 
   
@@ -16,6 +18,8 @@ function App() {
       <Route path="/" element={<Home/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
+      <Route path="/houses" element={<Houses/>}/>
+      <Route path="/characters" element={<Characters/>}/>
       </Routes> 
     </div>
     </BrowserRouter>
