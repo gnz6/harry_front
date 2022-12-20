@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllCharacters } from "../../redux/slices/characters/characterActions"
 import CharacterCard from './CharacterCard'
+import Buttons from '../Paging/Buttons'
 
 const Characters = () => {
 
@@ -60,10 +61,10 @@ const Characters = () => {
         :
         <div>
           {charsInPage()[0]?
-            <div>
+            <div className='flex items-center justify-between p-2'>
               {charsInPage().map(c=>{
                 return(
-                  <CharacterCard
+                  <CharacterCard 
                   key={c._id}
                   name={c.name}
                   image={c.image}
@@ -80,6 +81,7 @@ const Characters = () => {
         </div>
       }
 
+     <Buttons prevPage={prevPage} nextPage={nextPage} handleReload={handleReload}/>     
     </div>
   )
 }
